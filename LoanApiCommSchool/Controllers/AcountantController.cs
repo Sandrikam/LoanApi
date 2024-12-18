@@ -8,9 +8,15 @@ namespace LoanApiCommSchool.Controllers
 {
     public class AcountantController : Controller
     {
-        public IActionResult Index()
+        public IActionResult GetAccountant()
         {
-            return View();
+            return Ok(new { LoanType = "installment", 
+                            LoanID = "ZC123542", 
+                            Amount = 15000,
+                            LoanCCY = "USD",
+                            Term = 120,
+                            Status = "Active"
+                            });
         }
     }
 }

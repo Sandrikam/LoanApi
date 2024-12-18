@@ -8,9 +8,16 @@ namespace LoanApiCommSchool.Controllers
 {
     public class LoanController : Controller
     {
-        public IActionResult Index()
+        [Route("api/[controller]")]
+        public IActionResult GetLoan()
         {
-            return View();
+            return Ok(new { LoanType = "installment", 
+                            LoanID = "ZC123542", 
+                            Amount = 15000,
+                            LoanCCY = "USD",
+                            Term = 120,
+                            Status = "Active"
+                            });
         }
     }
 }
