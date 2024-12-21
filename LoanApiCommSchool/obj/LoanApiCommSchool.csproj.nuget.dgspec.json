@@ -28,11 +28,7 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data": {
-                "projectPath": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

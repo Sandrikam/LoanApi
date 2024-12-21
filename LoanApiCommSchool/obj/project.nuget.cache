@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "MGM2IWryGuc=",
-  "success": false,
+  "dgSpecHash": "tBwbgUY4HaE=",
+  "success": true,
   "projectFilePath": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sandr\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
@@ -137,15 +137,5 @@
     "C:\\Users\\sandr\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\sandr\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

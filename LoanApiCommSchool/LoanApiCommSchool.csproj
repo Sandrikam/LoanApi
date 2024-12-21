@@ -12,11 +12,5 @@
     <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\LoanApiCommSchool.Data\LoanApiCommSchool.Data" />
-  </ItemGroup>
-	
-  
+  </ItemGroup> 
 </Project>
