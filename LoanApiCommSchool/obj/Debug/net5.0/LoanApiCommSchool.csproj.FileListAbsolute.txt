@@ -100,3 +100,6 @@ C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\LoanApiCo
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\ref\LoanApiCommSchool.dll
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Humanizer.dll
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll

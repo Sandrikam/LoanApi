@@ -1,4 +1,7 @@
-﻿namespace LoanApiCommSchool.Models
+﻿using Swashbuckle.AspNetCore.Annotations;
+using System.Text.Json.Serialization;
+
+namespace LoanApiCommSchool.Models
 {
     public class User
     {

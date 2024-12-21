@@ -48,8 +48,19 @@ namespace LoanApiCommSchool.Controllers
                 return BadRequest(new { Message = "Invalid user data" });
             }
 
-            _context.User.Add(user); // Add user to the database
-            _context.SaveChanges(); // Save changes
+
+            try
+            {
+                _context.User.Add(user); // Add user to the database
+                _context.SaveChanges(); // Save changes
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"DbUpdateException: {ex.InnerException?.Message}");
+                throw;
+            }
+
+            
             return CreatedAtAction(nameof(GetUserById), new { id = user.ID }, user);
         }
     }
