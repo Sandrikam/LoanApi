@@ -8,14 +8,12 @@ namespace LoanApiCommSchool.Controllers
 {
     public class AcountantController : Controller
     {
+        [Route("api/[controller]")]
         public IActionResult GetAccountant()
         {
-            return Ok(new { LoanType = "installment", 
-                            LoanID = "ZC123542", 
-                            Amount = 15000,
-                            LoanCCY = "USD",
-                            Term = 120,
-                            Status = "Active"
+            return Ok(new { ID = 1, 
+                            FirstName = "Habib", 
+                            LastName = "Nurmagomedov"
                             });
         }
     }
