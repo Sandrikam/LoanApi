@@ -1,5 +1,6 @@
 ﻿using LoanApiCommSchool.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,34 +12,45 @@ namespace LoanApiCommSchool.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
+        private readonly LoanDBContext _context;
+
+        public UserController(LoanDBContext context)
+        {
+            _context = context;
+        }
+
+        //Get Users Endpoint
         [HttpGet]
         public IActionResult GetUser()
         {
-            return Ok(new { ID = 1, 
-                            FirstName = "ZC123542", 
-                            LastName = 15000,
-                            UserName = "USD",
-                            Age = 120,
-                            Salary = "Active",
-                            isBlocked = 0,
-                            Passwod = "shambala"
-                            });
+            var user = _context.User.ToList(); 
+            return Ok(user);
         }
 
-        [HttpPost]
-        public IActionResult AddUser(User user)
+        //Get User By ID
+        [HttpGet("{id}")]
+        public IActionResult GetUserById(int id)
         {
-            return Ok(new
+            var user = _context.User.FirstOrDefault(u => u.ID == id); // Find user by ID
+            if (user == null)
             {
-                ID = 1,
-                FirstName = "ZC123542",
-                LastName = 15000,
-                UserName = "USD",
-                Age = 120,
-                Salary = "Active",
-                isBlocked = 0,
-                Passwod = "shambala"
-            });
+                return NotFound(new { Message = "User not found" });
+            }
+            return Ok(user);
+        }
+
+        //Create User
+        [HttpPost]
+        public IActionResult AddUser([FromBody] User user)
+        {
+            if (user == null)
+            {
+                return BadRequest(new { Message = "Invalid user data" });
+            }
+
+            _context.User.Add(user); // Add user to the database
+            _context.SaveChanges(); // Save changes
+            return CreatedAtAction(nameof(GetUserById), new { id = user.ID }, user);
         }
     }
 }

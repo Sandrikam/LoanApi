@@ -98,3 +98,5 @@ C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\refint\Lo
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\LoanApiCommSchool.pdb
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\LoanApiCommSchool.genruntimeconfig.cache
 C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\obj\Debug\net5.0\ref\LoanApiCommSchool.dll
+C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Humanizer.dll
+C:\Users\sandr\Source\Repos\LoanApi\LoanApiCommSchool\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

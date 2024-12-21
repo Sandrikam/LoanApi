@@ -24,7 +24,8 @@ namespace LoanApiCommSchool
         public void ConfigureServices(IServiceCollection services)
         {
             //Db Link
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<LoanDBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // Swaggeerr
             services.AddControllers();
             services.AddSwaggerGen(c =>

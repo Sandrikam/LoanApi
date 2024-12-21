@@ -3,6 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Editor left-overs
+*~           # (x)emacs
+*.bak        # Windows related
+\#*\#        # (x)emacs
+*.orig       # Own usage
+
+*/Generated_Code/
+PrecompiledWeb
+*/ClientBin
+
 # User-specific files
 *.rsuser
 *.suo
@@ -40,6 +50,11 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
+*.suo        # 'user' settings like 'which file is open in Visual Studio'
+*.ncb        # Used for debugging
+*.user
+*.ccscc      # Used for versioning
+*.cache
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
