@@ -13,6 +13,6 @@ namespace LoanApiCommSchool.Models
         public string Email { get; set; }
         public decimal MonthlyIncome { get; set; }
         public bool IsBlocked { get; set; } = false;
-        public string Password { get; set; }
+        public string Password { get; set; } 
     }
 }
