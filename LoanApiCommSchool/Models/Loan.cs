@@ -8,10 +8,8 @@
         public string Currency { get; set; }
         public int Period { get; set; }
         public string Status { get; set; }
-
         // Foreign Key
         public int UserID { get; set; }
-
         // Navigation Property
         public User User { get; set; }
     }
