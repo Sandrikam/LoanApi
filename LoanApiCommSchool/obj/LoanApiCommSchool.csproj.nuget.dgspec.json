@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\LoanApiCommSchool.csproj": {}
+    "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\LoanApiCommSchool.csproj": {}
   },
   "projects": {
-    "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\LoanApiCommSchool.csproj": {
+    "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\LoanApiCommSchool.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
+        "projectUniqueName": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
         "projectName": "LoanApiCommSchool",
-        "projectPath": "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
-        "packagesPath": "C:\\Users\\a.maisuradze\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\obj\\",
+        "projectPath": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
+        "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\a.maisuradze\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,7 +57,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -67,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

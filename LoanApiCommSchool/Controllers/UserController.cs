@@ -10,6 +10,7 @@ namespace LoanApiCommSchool.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
+        [HttpGet]
         public IActionResult GetUser()
         {
             return Ok(new { ID = 1, 

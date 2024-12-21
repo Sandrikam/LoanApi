@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LoanApiCommSchool.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class LoanController : Controller
     {
-        [Route("api/[controller]")]
+        [HttpGet]
         public IActionResult GetLoan()
         {
             return Ok(new { LoanType = "installment", 
