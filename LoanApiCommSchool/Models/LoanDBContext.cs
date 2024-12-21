@@ -11,15 +11,23 @@ namespace LoanApiCommSchool.Models
         {
         }
         public DbSet<User> User { get; set; }
-        public DbSet<Loan> Loans { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Loan> Loan { get; set; }
+        public DbSet<Accountant> Accountant { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserRole>()
-                .HasNoKey();
+            modelBuilder.Entity<Loan>()
+                .Property(l => l.Amount)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.MonthlyIncome)
+                .HasPrecision(18, 2);
+
+            base.OnModelCreating(modelBuilder);
+
+
         }
 
     }

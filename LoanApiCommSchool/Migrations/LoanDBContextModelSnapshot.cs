@@ -18,6 +18,24 @@ namespace LoanApiCommSchool.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("LoanApiCommSchool.Models.Accountant", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Accountant");
+                });
+
             modelBuilder.Entity("LoanApiCommSchool.Models.Loan", b =>
                 {
                     b.Property<int>("ID")
@@ -26,6 +44,7 @@ namespace LoanApiCommSchool.Migrations
                         .UseIdentityColumn();
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Currency")
@@ -47,22 +66,7 @@ namespace LoanApiCommSchool.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Loans");
-                });
-
-            modelBuilder.Entity("LoanApiCommSchool.Models.Role", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Roles");
+                    b.ToTable("Loan");
                 });
 
             modelBuilder.Entity("LoanApiCommSchool.Models.User", b =>
@@ -88,9 +92,10 @@ namespace LoanApiCommSchool.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("MonthlyIncome")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
@@ -98,22 +103,7 @@ namespace LoanApiCommSchool.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("LoanApiCommSchool.Models.UserRole", b =>
-                {
-                    b.Property<int>("RoleID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasIndex("RoleID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("UserRoles");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("LoanApiCommSchool.Models.Loan", b =>
@@ -123,25 +113,6 @@ namespace LoanApiCommSchool.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("LoanApiCommSchool.Models.UserRole", b =>
-                {
-                    b.HasOne("LoanApiCommSchool.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LoanApiCommSchool.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
 
                     b.Navigation("User");
                 });

@@ -12,7 +12,7 @@ namespace LoanApiCommSchool.Models
         public int Age { get; set; }
         public string Email { get; set; }
         public decimal MonthlyIncome { get; set; }
-        public bool IsBlocked { get; set; }
-        public string PasswordHash { get; set; }
+        public bool IsBlocked { get; set; } = false;
+        public string Password { get; set; }
     }
 }

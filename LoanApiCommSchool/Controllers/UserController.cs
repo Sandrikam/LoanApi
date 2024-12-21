@@ -51,7 +51,7 @@ namespace LoanApiCommSchool.Controllers
             }
 
             //encrypt Password
-            user.PasswordHash = md5Encryptor.HashPasswordMD5(user.PasswordHash);
+            user.Password = md5Encryptor.HashPasswordMD5(user.Password);
 
             try
             {
@@ -90,7 +90,7 @@ namespace LoanApiCommSchool.Controllers
             user.Email = updatedUser.Email;
             user.MonthlyIncome = updatedUser.MonthlyIncome;
             user.IsBlocked = updatedUser.IsBlocked;
-            user.PasswordHash = updatedUser.PasswordHash;
+            user.Password = updatedUser.Password;
 
             _context.SaveChanges();
             return Ok(new { Message = "User updated successfully", User = user });
