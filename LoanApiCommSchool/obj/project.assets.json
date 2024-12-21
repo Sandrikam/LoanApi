@@ -7102,6 +7102,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data",
       "FluentValidation >= 11.11.0",
       "JWT >= 11.0.0",
       "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers >= 0.4.421302",
@@ -7138,7 +7139,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data": {
+              "projectPath": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -7207,5 +7212,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\sandr\\Source\\Repos\\LoanApi\\LoanApiCommSchool.Data\\LoanApiCommSchool.Data",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
