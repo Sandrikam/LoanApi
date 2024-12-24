@@ -1,8 +1,10 @@
 ﻿using LoanApiCommSchool.Methods;
 using LoanApiCommSchool.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +25,12 @@ namespace LoanApiCommSchool.Controllers
 
         // GET: api/User
         [HttpGet]
-        public IActionResult GetUser()
+        [SwaggerOperation(Summary = "Retrieve all users", Description = "Returns a list of all users in the system.")]
+        public IActionResult GetUser([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             try
             {
-                var users = _context.User.ToList();
+                var users = _context.User.Skip((page - 1) * pageSize).Take(pageSize).ToList();
                 return Ok(users);
             }
             catch (Exception ex)
@@ -57,8 +60,15 @@ namespace LoanApiCommSchool.Controllers
 
         // POST: api/User
         [HttpPost]
+        [Authorize(Roles = "Accountant")]
+
         public IActionResult AddUser([FromBody] User user)
         {
+            if (_context.User.Any(u => u.Username == user.Username && u.ID != user.ID))
+            {
+                return Conflict(new { Message = "Username is already taken." });
+            }
+
             if (user == null || string.IsNullOrEmpty(user.Password))
             {
                 return BadRequest(new { Message = "Invalid user data or missing password." });
