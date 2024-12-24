@@ -18,11 +18,26 @@ namespace LoanApiCommSchool.Controllers
             _context = context;
         }
 
+        [HttpGet("debug-claims")]
+        [Authorize]
+        public IActionResult DebugClaims()
+        {
+            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+            return Ok(claims);
+        }
+
+
         // GET: api/Loan
         [HttpGet]
         public IActionResult GetAllLoans()
         {
-            var userId = int.Parse(User.FindFirst("UserId").Value);
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+            if (userIdClaim == null)
+            {
+                return Unauthorized(new { Message = "User ID claim is missing in the token." });
+            }
+
+            var userId = int.Parse(userIdClaim.Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
             // Accountant Loan Visibility
@@ -37,7 +52,7 @@ namespace LoanApiCommSchool.Controllers
         [HttpGet("{id}")]
         public IActionResult GetLoanById(int id)
         {
-            var userId = int.Parse(User.FindFirst("UserId").Value);
+            var userId = int.Parse(User.FindFirst("Id").Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
             var loan = role == "Accountant"
@@ -57,7 +72,7 @@ namespace LoanApiCommSchool.Controllers
         [Authorize]
         public IActionResult AddLoan([FromBody] Loan loan)
         {
-            var userId = int.Parse(User.FindFirst("UserId").Value);
+            var userId = int.Parse(User.FindFirst("Id").Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
             if (loan == null)
@@ -123,7 +138,7 @@ namespace LoanApiCommSchool.Controllers
         public IActionResult DeleteLoan(int id)
         {
 
-            var userId = int.Parse(User.FindFirst("UserId").Value);
+            var userId = int.Parse(User.FindFirst("Id").Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
             var loan = role == "Accountant"

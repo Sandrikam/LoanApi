@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using LoanApiCommSchool.Models;
 using System.Linq;
+using System;
 
 namespace LoanApiCommSchool.Controllers
 {
@@ -33,17 +34,19 @@ namespace LoanApiCommSchool.Controllers
             var hashedPassword = md5Encryptor.HashPasswordMD5(login.Password);
 
             var user = _context.User.FirstOrDefault(u => u.Username == login.Username && u.Password == hashedPassword);
-
             if (user == null)
             {
-                return Unauthorized(new { Message = "Invalid username or password" });
+                return Unauthorized(new { Message = "Invalid username or password." });
             }
 
+            // Determine the role by checking the Accountant table
             var role = _context.Accountant.Any(a => a.ID == user.ID) ? "Accountant" : "User";
 
-            var token = JWTTokenGenerator.GenerateToken(user.Username, role, _configuration);
+            // Generate JWT token
+            var token = JWTTokenGenerator.GenerateToken(user.Username, role, user.ID, _configuration);
 
-            
+            Console.WriteLine($"Bearer {token}");
+
             return Ok(new { Token = token });
         }
 

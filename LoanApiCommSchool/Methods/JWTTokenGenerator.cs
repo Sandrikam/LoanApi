@@ -4,12 +4,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System;
+using LoanApiCommSchool.Models;
 
 namespace LoanApiCommSchool.Methods
 {
     public class JWTTokenGenerator
     {
-        public static string GenerateToken(string username, string role, IConfiguration configuration)
+        public static string GenerateToken(string username, string role, int userId, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
 
@@ -19,7 +20,9 @@ namespace LoanApiCommSchool.Methods
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Role, role),
+                new Claim("UserId", userId.ToString())
+
             };
 
             var token = new JwtSecurityToken(
