@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,12 @@ namespace LoanApiCommSchool.Controllers
     public class UserController : Controller
     {
         private readonly LoanDBContext _context;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(LoanDBContext context)
+        public UserController(LoanDBContext context, ILogger<UserController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/User
@@ -88,6 +91,8 @@ namespace LoanApiCommSchool.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] User user)
         {
+            _logger.LogInformation("Register endpoint hit with Username: {Username}", user.Username);
+
             if (user == null || string.IsNullOrEmpty(user.Password))
             {
                 return BadRequest(new { Message = "Invalid user data or missing password." });

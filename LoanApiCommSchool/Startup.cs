@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using FluentValidation.AspNetCore;
 
 
 namespace LoanApiCommSchool
@@ -27,7 +28,8 @@ namespace LoanApiCommSchool
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Validators.UserValidator>());
 
             // Swaggeerr
             services.AddSwaggerGen(c =>

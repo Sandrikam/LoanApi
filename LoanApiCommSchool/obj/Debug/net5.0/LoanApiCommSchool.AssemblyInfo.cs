@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoanApiCommSchool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d9190b360c0688cc05a1d78dd88748f0e2e8fb6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75be0debc1e32db60bd6a6653f8fe8cf29d7e5b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoanApiCommSchool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoanApiCommSchool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
