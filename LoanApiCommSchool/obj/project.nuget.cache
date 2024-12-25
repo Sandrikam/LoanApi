@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GF6LI+MPw7P0uP4iPbtH0sBRrnNZ1JOa+OVgjOkcx39vbzAukxWdDXJs/YUS4YhZ4BTt9I9bSjyfWUTadNblFA==",
+  "dgSpecHash": "DFMWkYE2XOs=",
   "success": true,
   "projectFilePath": "C:\\Users\\a.maisuradze\\source\\repos\\LoanApiCommSchool\\LoanApiCommSchool\\LoanApiCommSchool.csproj",
   "expectedPackageFiles": [
@@ -168,5 +168,16 @@
     "C:\\Users\\a.maisuradze\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\a.maisuradze\\.nuget\\packages\\webmotions.fake.authentication.jwtbearer\\5.0.0\\webmotions.fake.authentication.jwtbearer.5.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNetCore.Authentication.JwtBearer' 5.0.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-q7cg-43mg-qp69",
+      "libraryId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
