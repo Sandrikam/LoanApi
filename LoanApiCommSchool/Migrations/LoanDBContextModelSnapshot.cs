@@ -31,6 +31,9 @@ namespace LoanApiCommSchool.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("Accountant");

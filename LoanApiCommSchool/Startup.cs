@@ -112,6 +112,8 @@ namespace LoanApiCommSchool
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LoanApiCommSchool v1"));
             }
 
+            app.UseMiddleware<LoanApiCommSchool.MiddleWare.ExceptionHandler>();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

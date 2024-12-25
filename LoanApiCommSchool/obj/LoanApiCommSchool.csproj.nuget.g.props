@@ -5,13 +5,12 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\a.maisuradze\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\sandr\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.12.2</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.11.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\a.maisuradze\.nuget\packages\" />
-    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+    <SourceRoot Include="C:\Users\sandr\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server\3.0.0\build\Microsoft.Extensions.ApiDescription.Server.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server\3.0.0\build\Microsoft.Extensions.ApiDescription.Server.props')" />
@@ -20,8 +19,8 @@
     <Import Project="$(NuGetPackageRoot)microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.4.421302\build\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.4.421302\build\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\a.maisuradze\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\a.maisuradze\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.0</PkgMicrosoft_EntityFrameworkCore_Tools>
-    <PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers Condition=" '$(PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers)' == '' ">C:\Users\a.maisuradze\.nuget\packages\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.4.421302</PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers>
+    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\sandr\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\sandr\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.0</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers Condition=" '$(PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers)' == '' ">C:\Users\sandr\.nuget\packages\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.4.421302</PkgMicrosoft_DotNet_UpgradeAssistant_Extensions_Default_Analyzers>
   </PropertyGroup>
 </Project>

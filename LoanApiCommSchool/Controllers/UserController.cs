@@ -8,6 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace LoanApiCommSchool.Controllers
@@ -45,12 +46,36 @@ namespace LoanApiCommSchool.Controllers
         {
             try
             {
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+                if (userIdClaim == null)
+                {
+                    return Unauthorized(new { Message = "User ID claim is missing in the token." });
+                }
+
+                var loggedInUserId = int.Parse(userIdClaim.Value);
+                var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+                if (role == "User" && loggedInUserId != id)
+                {
+                    return StatusCode(403, new { Message = "You do not have permission to access this user's details." });
+                }
+
                 var user = _context.User.FirstOrDefault(u => u.ID == id);
                 if (user == null)
                 {
                     return NotFound(new { Message = "User not found" });
                 }
-                return Ok(user);
+                return Ok( new 
+                { 
+                    user.ID,
+                    user.FirstName,
+                    user.LastName,
+                    user.Username,
+                    user.Age,
+                    user.Email,
+                    user.MonthlyIncome,
+                    user.IsBlocked
+                });
             }
             catch (Exception ex)
             {
@@ -58,17 +83,10 @@ namespace LoanApiCommSchool.Controllers
             }
         }
 
-        // POST: api/User
-        [HttpPost]
-        [Authorize(Roles = "Accountant")]
-
-        public IActionResult AddUser([FromBody] User user)
+        // POST: api/User/Register
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] User user)
         {
-            if (_context.User.Any(u => u.Username == user.Username && u.ID != user.ID))
-            {
-                return Conflict(new { Message = "Username is already taken." });
-            }
-
             if (user == null || string.IsNullOrEmpty(user.Password))
             {
                 return BadRequest(new { Message = "Invalid user data or missing password." });
@@ -76,9 +94,19 @@ namespace LoanApiCommSchool.Controllers
 
             try
             {
-                // Encrypt Password
+                // Check if the username already exists
+                if (_context.User.Any(u => u.Username == user.Username))
+                {
+                    return Conflict(new { Message = "Username is already taken." });
+                }
+
+                // Hash the password before storing
                 user.Password = md5Encryptor.HashPasswordMD5(user.Password);
 
+                // Default IsBlocked value
+                user.IsBlocked = false;
+
+                // Add user to the database
                 _context.User.Add(user);
                 _context.SaveChanges();
 
@@ -105,6 +133,23 @@ namespace LoanApiCommSchool.Controllers
 
             try
             {
+                //Check TOken
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+                if (userIdClaim == null)
+                {
+                    return Unauthorized(new { Message = "User ID claim is missing in the token." });
+                }
+
+                //Check Permision
+                var loggedInUserId = int.Parse(userIdClaim.Value);
+                var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+                // Check if the logged-in user is allowed to update this user
+                if (role != "Accountant" && loggedInUserId != id)
+                {
+                    return StatusCode(403, new { Message = "You do not have permission to Update Details of this user!" });
+                }
+
                 var user = _context.User.FirstOrDefault(u => u.ID == id);
                 if (user == null)
                 {
@@ -118,7 +163,6 @@ namespace LoanApiCommSchool.Controllers
                 user.Age = updatedUser.Age;
                 user.Email = updatedUser.Email;
                 user.MonthlyIncome = updatedUser.MonthlyIncome;
-                user.IsBlocked = updatedUser.IsBlocked;
 
                 // Hash password if it is updated
                 if (!string.IsNullOrEmpty(updatedUser.Password))
@@ -138,5 +182,38 @@ namespace LoanApiCommSchool.Controllers
                 return StatusCode(500, new { Message = "An unexpected error occurred.", Error = ex.Message });
             }
         }
+
+        [HttpPut("block/{id}")]
+        [Authorize(Roles = "Accountant")]
+        public IActionResult BlockUser(int id)
+        {
+            var user = _context.User.FirstOrDefault(u => u.ID == id);
+            if (user == null)
+            {
+                return NotFound(new { Message = "User not found" });
+            }
+
+            user.IsBlocked = true;
+            _context.SaveChanges();
+
+            return Ok(new { Message = "User blocked successfully." });
+        }
+
+        [HttpPut("unblock/{id}")]
+        [Authorize(Roles = "Accountant")]
+        public IActionResult UnblockUser(int id)
+        {
+            var user = _context.User.FirstOrDefault(u => u.ID == id);
+            if (user == null)
+            {
+                return NotFound(new { Message = "User not found" });
+            }
+
+            user.IsBlocked = false;
+            _context.SaveChanges();
+
+            return Ok(new { Message = "User unblocked successfully." });
+        }
+
     }
 }

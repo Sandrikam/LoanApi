@@ -47,7 +47,7 @@ namespace LoanApiCommSchool.Controllers
             }
 
             // Determine the role by checking the Accountant table
-            var role = _context.Accountant.Any(a => a.ID == user.ID) ? "Accountant" : "User";
+            var role = _context.Accountant.Any(a => a.UserId == user.ID) ? "Accountant" : "User";
 
             // Generate JWT token
             var token = JWTTokenGenerator.GenerateToken(user.Username, role, user.ID, _configuration);
