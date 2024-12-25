@@ -26,7 +26,7 @@ namespace LoanApiCommSchool.Controllers
 
         // GET: api/User
         [HttpGet]
-        [SwaggerOperation(Summary = "Retrieve all users", Description = "Returns a list of all users in the system.")]
+        [Authorize(Roles = "Accountant")]
         public IActionResult GetUser([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             try
@@ -42,20 +42,21 @@ namespace LoanApiCommSchool.Controllers
 
         // GET: api/User/{id}
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult GetUserById(int id)
         {
             try
             {
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-                if (userIdClaim == null)
+                var userId = TokenReader.GetUserIdFromToken(User);
+                var role = TokenReader.GetRoleFromToken(User);
+
+                if (userId == null)
                 {
                     return Unauthorized(new { Message = "User ID claim is missing in the token." });
                 }
 
-                var loggedInUserId = int.Parse(userIdClaim.Value);
-                var role = User.FindFirst(ClaimTypes.Role)?.Value;
 
-                if (role == "User" && loggedInUserId != id)
+                if (role == "User" && userId != id)
                 {
                     return StatusCode(403, new { Message = "You do not have permission to access this user's details." });
                 }
@@ -134,18 +135,16 @@ namespace LoanApiCommSchool.Controllers
             try
             {
                 //Check TOken
-                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
-                if (userIdClaim == null)
+                var userId = TokenReader.GetUserIdFromToken(User);
+                var role = TokenReader.GetRoleFromToken(User);
+
+                if (userId == null)
                 {
                     return Unauthorized(new { Message = "User ID claim is missing in the token." });
                 }
 
-                //Check Permision
-                var loggedInUserId = int.Parse(userIdClaim.Value);
-                var role = User.FindFirst(ClaimTypes.Role)?.Value;
-
                 // Check if the logged-in user is allowed to update this user
-                if (role != "Accountant" && loggedInUserId != id)
+                if (role != "Accountant" && userId != id)
                 {
                     return StatusCode(403, new { Message = "You do not have permission to Update Details of this user!" });
                 }
